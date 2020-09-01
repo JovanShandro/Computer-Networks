@@ -1,0 +1,42 @@
+------------- For point b ----------------
+# a1 tracepath 2001:638:709:a2::1  before breaking down f1-eth1
+ 1?: [LOCALHOST]                        0.015ms pmtu 1500
+ 1:  _gateway                                              0.040ms 
+ 1:  _gateway                                              0.014ms 
+ 2:  2001:638:709:f::f1:f2                                 0.018ms 
+ 3:  2001:638:709:a2::1                                    0.016ms reached
+     Resume: pmtu 1500 hops 3 back 3 
+-------------------------------------------
+# a1 tracepath 2001:638:709:a2::1 after breaking down f1-eth1
+ 1?: [LOCALHOST]                        0.015ms pmtu 1500
+ 1:  _gateway                                              0.038ms 
+ 1:  _gateway                                              0.014ms 
+ 2:  2001:638:709:f::f1:f4                                 0.018ms 
+ 3:  2001:638:709:f::f4:f3                                 0.019ms 
+ 4:  2001:638:709:f::f3:f2                                 0.020ms 
+ 5:  2001:638:709:a2::1                                    0.024ms reached
+     Resume: pmtu 1500 hops 5 back 5 
+
+
+
+------------- For point e ----------------
+# a1 tracepath 2001:638:709:b1::1
+ 1?: [LOCALHOST]                        0.010ms pmtu 1500
+ 1:  _gateway                                              0.027ms 
+ 1:  _gateway                                              0.015ms 
+ 2:  2001:638:709:f::f1:f2                                 0.020ms 
+ 3:  2001:638:709:e::e4:e1                                 0.026ms asymm  5 
+ 4:  2001:638:709:b1::1                                    0.021ms reached
+     Resume: pmtu 1500 hops 4 back 6 
+----------------------------------------
+# b1 tracepath 2001:638:709:a1::1
+ 1?: [LOCALHOST]                        0.014ms pmtu 1500
+ 1:  _gateway                                              0.040ms 
+ 1:  _gateway                                              0.027ms 
+ 2:  2001:638:709:e::e1:e4                                 0.031ms 
+ 3:  2001:638:709:f::f2:f3                                 0.035ms 
+ 4:  2001:638:709:f::f2                                    0.029ms asymm  2 
+ 5:  2001:638:709:f::f2:f1                                 0.035ms asymm  3 
+ 6:  2001:638:709:a1::1                                    0.036ms reached
+     Resume: pmtu 1500 hops 6 back 4 
+
