@@ -1,0 +1,22 @@
+
+; <<>> DiG 9.11.5-P4-5.1ubuntu2.1-Ubuntu <<>> grader.eecs.jacobs-university.de AAAA
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 28980
+;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;grader.eecs.jacobs-university.de. IN	AAAA
+
+;; ANSWER SECTION:
+grader.eecs.jacobs-university.de. 2803 IN CNAME	cantaloupe.eecs.jacobs-university.de.
+cantaloupe.eecs.jacobs-university.de. 2803 IN AAAA 2001:638:709:300::29
+cantaloupe.eecs.jacobs-university.de. 2803 IN AAAA 2001:638:709:3000::29
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53)
+;; WHEN: Mi Apr 29 19:49:37 CEST 2020
+;; MSG SIZE  rcvd: 142
+
