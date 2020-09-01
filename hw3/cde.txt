@@ -1,0 +1,34 @@
+b) Running tracepath from h1 to h2 and from h2 to h1 respectively we get:
+--------------------------------------------------------------
+ 1?: [LOCALHOST]                        0.014ms pmtu 1500
+ 1:  2001:638:709:a::f                                     0.074ms 
+ 1:  2001:638:709:a::f                                     0.028ms 
+ 2:  2001:638:709:f::2                                     0.033ms 
+ 3:  2001:638:709:b::1                                     0.039ms reached
+     Resume: pmtu 1500 hops 3 back 3 
+--------------------------------------------------------------
+ 1?: [LOCALHOST]                        0.048ms pmtu 1500
+ 1:  2001:638:709:b::e                                     0.103ms 
+ 1:  2001:638:709:b::e                                     0.97ms 
+ 2:  2001:638:709:e::1                                     0.231ms 
+ 3:  2001:638:709:a::1                                     0.216ms reached
+     Resume: pmtu 1500 hops 3 back 3 
+
+From the results above we can se the traffic is using an antisymmetric path.
+
+c) The packets fail to move from r1 to r2 as they are 
+of a bigger size then the specified MTU. The packets can move 
+along the other links as the size is still lower than 1500 
+(the default MTU).
+
+
+d) In some sense both commands can be used to find the MTU
+in the same manner, sending packets of different sizes until
+finding the largest size for which the packets get sent 
+successfully and add 28 to it (because of IP/ICMP headers). The 
+difference is that tracepath does this automatically while tracing 
+the path to the destination, whereas with ping we have
+to manually try with packets of different sizes until we find 
+the largest one for which the sending does not fail.
+
+e) Yes the MTU discovery is done everytime you run ping or tracepath.
